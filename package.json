@@ -1,4 +1,18 @@
 {
+  "author": {
+    "name": "Radin Vafaei",
+    "email": "radin.vafaei@icloud.com"
+  },
+  "keywords": [
+    "react",
+    "payment",
+    "persian bank",
+    "iranian bank",
+    "بانک",
+    "پرداخت"
+  ],
+  "license": "MIT",
+  "description": "payment component who supports banks of Iran",
   "name": "react-checkout",
   "version": "0.1.0",
   "private": true,
