@@ -1,8 +1,9 @@
 import React ,{ Component } from 'react'
 import axios from 'axios'
 import {Utils} from '../../utils'
+import style from './assets/stylesheets'
+import injectSheet from 'react-jss'
 import shetab from './assets/icons/svg/Shetab.svg'
-import './assets/stylesheets/index.css'
 import banks from './banks'
 const images = Utils.importAll(require.context('./assets/icons/svg/', true, /\.svg/));
 class IranPayment extends Component{
@@ -89,34 +90,35 @@ class IranPayment extends Component{
     }
     render(){
         const { backgroundColor ,color,logo,name,isReadyForSend} = this.state
+        const { classes } = this.props
         return(
             <form onChange={this.bank} onSubmit={this.pay}>
-                <div className='card' style={{backgroundColor : backgroundColor,color:color}}>
-                    <div className='cardName'>
-                        <img className='shetab' src={shetab} alt='shetab'/>
+                <div className={classes.card} style={{backgroundColor : backgroundColor,color:color}}>
+                    <div className={classes.cardName}>
+                        <img className={classes.shetab} src={shetab} alt='shetab'/>
                         <label htmlFor='inp0'>{name}</label>
-                        <img className='logo' src={images[logo]} alt={name}/>
+                        <img className={classes.logo} src={images[logo]} alt={name}/>
                     </div>
-                    <div className='id'>
+                    <div className={classes.id}>
                         <input name='id0' style={{color : color}} minLength={4} maxLength={4} tabIndex={1} id="inp0" type='number' required/>
                         <input name='id1' style={{color : color}} minLength={4} maxLength={4} tabIndex={2} id="inp1" type='number' required/>
                         <input name='id2' style={{color : color}} minLength={4} maxLength={4} tabIndex={3} id="inp2" type='number' required/>
                         <input name='id3' style={{color : color}} minLength={4} maxLength={4} tabIndex={4} id="inp3" type='number' required/>
                         <input name='id4' style={{color : color}} minLength={3} maxLength={3} tabIndex={5} id="inp4" type='number' disabled ref={this.input}/>
                     </div>
-                    <div className='cardInfo'>
-                        <div className='date'>
+                    <div className={classes.cardInfo}>
+                        <div className={classes.date}>
                             <input name='expDateByY' style={{color : color}} minLength={2} maxLength={2} tabIndex={7} id="expByY" type='number' placeholder='سال' required/>
                             /
                             <input name='expDateByM' style={{color : color}} minLength={2} maxLength={2} tabIndex={6} id="expByM" type='number' placeholder='ماه' required/>
                         </div>
-                        <div className='cvv2'>
+                        <div className={classes.cvv2}>
                             <label style={{color : color}} htmlFor='cvv'>cvv2</label>
                             <input name='cvv' style={{color : color}} minLength={3} maxLength={4} tabIndex={8} id="cvv" type='number' required/>
                         </div>
                     </div>
                 </div>
-                <div className='submit' style={{opacity : (isReadyForSend) ? '1':'.01'}}>
+                <div className={classes.submit} style={{opacity : (isReadyForSend) ? '1':'.01'}}>
                     <label htmlFor='pass'>رمز دوم</label>
                     <input id='pass' name='pass' minLength={4} maxLength={12} tabIndex={9} type='password' disabled={!isReadyForSend} required/>
                     <input type='submit' value='پرداخت' id='submit' disabled={!isReadyForSend}/>
@@ -125,4 +127,4 @@ class IranPayment extends Component{
         )
     }
 }
-export default IranPayment
+export default injectSheet(style)(IranPayment)

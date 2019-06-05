@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckOut from './components/checkout'
+
 class App extends Component {
     constructor(props){
         super(props)

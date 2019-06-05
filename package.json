@@ -18,9 +18,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "jss": "^9.8.7",
     "react": "^16.8.6",
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.8.6",
+    "react-jss": "^8.6.1",
     "react-paypal-button": "^2.0.3",
     "react-paypal-express-checkout": "^1.0.5",
     "react-scripts": "3.0.0",
